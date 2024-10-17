@@ -119,5 +119,17 @@ def delete_observation(id):
     except Exception as e:
         return jsonify({'status': 'error', 'message': 'Failed to delete observation'}), 500
 
+@app.route('/')
+def home():
+    return jsonify({
+        'message': 'Welcome to the WildVision Observations Backend!',
+        'endpoints': {
+            'Add Observation': '/api/add_observation (POST)',
+            'Get All Observations': '/api/get_observations (GET)',
+            'Get Single Observation': '/api/get_observation/<id> (GET)',
+            'Delete Observation': '/api/delete_observation/<id> (DELETE)'
+        }
+    }), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
